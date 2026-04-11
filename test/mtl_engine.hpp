@@ -21,6 +21,9 @@
 #include "Camera.hpp"
 #include <filesystem>
 
+#include "lsysgen.hpp"
+#include "lsysparse.hpp"
+
 #include <simd/simd.h>
 
 struct Uniforms {

@@ -174,6 +174,8 @@
 		9BD4FE642F3AA03000EA65DB /* libglfw.3.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.4.dylib; path = ../../../../../opt/homebrew/Cellar/glfw/3.4/lib/libglfw.3.4.dylib; sourceTree = "<group>"; };
 		9BD4FE6B2F3AA4AF00EA65DB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9BD4FE6D2F3AA4B800EA65DB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9BE716142F770E57004FEB61 /* example_apple_metal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = example_apple_metal.xcodeproj; sourceTree = "<group>"; };
+		9BE716192F770E57004FEB61 /* example_apple_opengl2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = example_apple_opengl2.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -418,6 +420,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9BE716F62F770E57004FEB61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9BE716F82F770E57004FEB61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -470,6 +486,16 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9BD4FDC12F3A9D3300EA65DB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9BE716F82F770E57004FEB61 /* Products */;
+					ProjectRef = 9BE716142F770E57004FEB61 /* example_apple_metal.xcodeproj */;
+				},
+				{
+					ProductGroup = 9BE716F62F770E57004FEB61 /* Products */;
+					ProjectRef = 9BE716192F770E57004FEB61 /* example_apple_opengl2.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9BD4FDBF2F3A9D3300EA65DB /* test */,
@@ -492,6 +518,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -553,6 +580,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -599,6 +627,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -606,8 +635,10 @@
 		9BD4FDC82F3A9D3300EA65DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "\"Any mac SDK x86_64\"";
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/metal-cpp",
 					/opt/homebrew/Cellar/glfw/3.4/include,
@@ -625,8 +656,10 @@
 		9BD4FDC92F3A9D3300EA65DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = arm64;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "\"Any mac SDK x86_64\"";
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/metal-cpp",
 					/opt/homebrew/Cellar/glfw/3.4/include,
@@ -635,6 +668,7 @@
 					"$(inherited)",
 					/opt/homebrew/Cellar/glfw/3.4/lib,
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 6.0;
 			};

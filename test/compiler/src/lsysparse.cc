@@ -127,6 +127,17 @@ int Parser::parse_input(const std::string &input) {
             // FIX 3: guard GOTO lookup — missing entry = error, not UB
             int top = state_stack.back();
             if(!transitions.count(top) || !transitions[top].count(rule.lhs)){
+                cerr << "DEBUG:\n";
+                cerr << "  state before reduce: " << top << "\n";
+                cerr << "  reduced to: " << rule.lhs << "\n";
+                cerr << "  lookahead: " << lookahead << "\n";
+
+                cerr << "  available transitions from state " << top << ":\n";
+                if (transitions.count(top)) {
+                    for (auto &p : transitions[top]) {
+                        cerr << "    " << p.first << " -> " << p.second << "\n";
+                    }
+                }
                 cerr << "ERROR: no GOTO for '" << rule.lhs << "' from state " << top << "\n";
                 return 1;
             }

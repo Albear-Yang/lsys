@@ -9,10 +9,16 @@
 #include <iostream>
 #include "mtl_engine.hpp"
 #include "Camera.hpp"
+#include "desktop_window.hpp"
 
 void MTLEngine::init() {
     initDevice();
     initWindow();
+    
+    makeDesktopWindow(glfwWindow);
+    createStatusBarItem([this](int idx) {
+//        currentProgram = idx;
+    });
     
     createCube();
     createDefaultLibrary();
