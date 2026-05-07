@@ -325,6 +325,7 @@ DrawCmd Lsystem::compile_draw_cmd(shared_ptr<Node> cmd) {
         return { [r,g,b,a,inner](Turtle &t, const Env &e){
             t.fill(r(e),g(e),b(e),a(e));
             for (auto &c : inner) c.execute(t,e);
+            t.fill(-1,-1,-1,-1); // terminating fill
         }};
     }
     if (tag == "LBRACK") {

@@ -6,6 +6,7 @@
 #include <vector>
 #include <stdexcept>
 #include <cctype>
+#include "lsysgen.hpp"
 #include <unordered_map>
 
 struct Token {
@@ -147,4 +148,35 @@ inline std::string tokens_to_parser_input(const std::vector<Token> &tokens) {
     return out;
 }
 
+static std::vector<SymbolInstance> parse_axiom(const std::string &src) {
+   std::vector<SymbolInstance> axiom;
+   size_t i = 0;
+   auto skip = [&]{ while(i<src.size()&&std::isspace(src[i]))++i; };
+   while(i < src.size()){
+       skip();
+       if(i >= src.size()) break;
+       if(!std::isalpha(src[i]) && src[i]!='_') { ++i; continue; }
+       size_t s = i;
+       while(i<src.size()&&(std::isalnum(src[i])||src[i]=='_')) ++i;
+       SymbolInstance inst;
+       inst.name = src.substr(s, i-s);
+       skip();
+       if(i<src.size() && src[i]=='('){
+           ++i;
+           skip();
+           while(i<src.size() && src[i]!=')'){
+               size_t ns = i;
+               if(i<src.size()&&src[i]=='-') ++i;
+               while(i<src.size()&&(std::isdigit(src[i])||src[i]=='.')) ++i;
+               float val = std::stof(src.substr(ns, i-ns));
+               inst.args.push_back([val](const Env&){ return val; });
+               skip();
+               if(i<src.size()&&src[i]==',') { ++i; skip(); }
+           }
+           if(i<src.size()) ++i;
+       }
+       axiom.push_back(std::move(inst));
+   }
+   return axiom;
+}
 #endif // LSYSLEX_HPP

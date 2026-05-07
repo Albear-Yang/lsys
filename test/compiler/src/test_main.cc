@@ -40,43 +40,43 @@
 //
 //struct Line2D { float x0, y0, x1, y1; float r, g, b, a; };
 //
-//struct Turtle2D : public Turtle {
-//   float x = 0, y = 0;
-//   float angle = -90.0f;         // degrees, 0 = right, -90 = up
-//   float cur_r = 1, cur_g = 1, cur_b = 1, cur_a = 1;
-//
-//   struct State { float x,y,angle,r,g,b,a; };
-//   std::stack<State> stack_;
-//   std::vector<Line2D> lines;
-//
-//   void reset(float sx=0, float sy=0, float sa=-90.0f){
-//       x=sx; y=sy; angle=sa;
-//       cur_r=cur_g=cur_b=cur_a=1;
-//       while(!stack_.empty()) stack_.pop();
-//       lines.clear();
-//   }
-//
-//   void forward(float dist) override {
-//       float rad = angle * 3.14159265f / 180.0f;
-//       float nx = x + dist * std::cos(rad);
-//       float ny = y + dist * std::sin(rad);
-//       lines.push_back({x, y, nx, ny, cur_r, cur_g, cur_b, cur_a});
-//       x = nx; y = ny;
-//   }
-//   void yaw(float deg)   override { angle += deg; }
-//   void pitch(float)     override {}   // ignored in 2D
-//   void roll(float)      override {}   // ignored in 2D
-//   void fill(float r, float g, float b, float a) override {
-//       cur_r=r; cur_g=g; cur_b=b; cur_a=a;
-//   }
-//   void push() override { stack_.push({x,y,angle,cur_r,cur_g,cur_b,cur_a}); }
-//   void pop()  override {
-//       if(stack_.empty()) return;
-//       auto s = stack_.top(); stack_.pop();
-//       x=s.x; y=s.y; angle=s.angle;
-//       cur_r=s.r; cur_g=s.g; cur_b=s.b; cur_a=s.a;
-//   }
-//};
+////struct Turtle2D : public Turtle {
+////   float x = 0, y = 0;
+////   float angle = -90.0f;         // degrees, 0 = right, -90 = up
+////   float cur_r = 1, cur_g = 1, cur_b = 1, cur_a = 1;
+////
+////   struct State { float x,y,angle,r,g,b,a; };
+////   std::stack<State> stack_;
+////   std::vector<Line2D> lines;
+////
+////   void reset(float sx=0, float sy=0, float sa=-90.0f){
+////       x=sx; y=sy; angle=sa;
+////       cur_r=cur_g=cur_b=cur_a=1;
+////       while(!stack_.empty()) stack_.pop();
+////       lines.clear();
+////   }
+////
+////   void forward(float dist) override {
+////       float rad = angle * 3.14159265f / 180.0f;
+////       float nx = x + dist * std::cos(rad);
+////       float ny = y + dist * std::sin(rad);
+////       lines.push_back({x, y, nx, ny, cur_r, cur_g, cur_b, cur_a});
+////       x = nx; y = ny;
+////   }
+////   void yaw(float deg)   override { angle += deg; }
+////   void pitch(float)     override {}   // ignored in 2D
+////   void roll(float)      override {}   // ignored in 2D
+////   void fill(float r, float g, float b, float a) override {
+////       cur_r=r; cur_g=g; cur_b=b; cur_a=a;
+////   }
+////   void push() override { stack_.push({x,y,angle,cur_r,cur_g,cur_b,cur_a}); }
+////   void pop()  override {
+////       if(stack_.empty()) return;
+////       auto s = stack_.top(); stack_.pop();
+////       x=s.x; y=s.y; angle=s.angle;
+////       cur_r=s.r; cur_g=s.g; cur_b=s.b; cur_a=s.a;
+////   }
+////};
 //
 //// ─── parse axiom ──────────────────────────────────────────────────────────────
 //// Axiom format: "F(1.0) G B(0.5, 2.0)"
